@@ -297,7 +297,7 @@ export default function Home() {
               <h2 className="text-2xl font-bold text-[#1A2238]">
                 Trending Right Now
               </h2>
-              <p className="text-sm text-gray-500">The most popular courses this week</p>
+             
             </div>
             <button
               onClick={() => navigate("/courses")}
