@@ -107,8 +107,8 @@ export default function CourseCard({ course }) {
 
       
         <div className="mt-2 flex items-baseline gap-0.5">
-          <span className="text-[10px] font-sans text-gray-600 font-medium">₹</span>
-          <span className="text-[14px] font-mono  text-gray-900 tracking-tight">
+          <span className="text-[10px]  text-gray-600 font-medium">₹</span>
+          <span className="text-[14px]  text-gray-900 tracking-tight">
             {course.price.toLocaleString("en-IN")}
           </span>
         </div>
