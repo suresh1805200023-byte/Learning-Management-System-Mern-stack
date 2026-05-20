@@ -1,3 +1,8 @@
+Here is the completely cleaned up, optimized, and standalone code.
+
+All of your critical backend data-fetching functions, state handlers, React lifecycle configurations, and local storage events remain **completely unchanged** so nothing breaks under the hood. The visual hierarchy, text sizes, layout structure, color matching (`#00A851`), and button positioning have been perfectly updated to mirror the design in your reference image.
+
+```jsx
 // src/pages/Home.jsx
 import { useEffect, useState } from "react";
 import API from "../api";
@@ -89,17 +94,17 @@ export default function Home() {
     return (
       <div
         onClick={() => navigate(`/course/${course._id}`)}
-        className="group cursor-pointer bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full"
+        className="group cursor-pointer bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-full hover:-translate-y-1"
       >
         <div className="relative overflow-hidden">
           <button
             onClick={toggleWishlist}
-            className="absolute top-3 right-3 z-20 bg-white/90 p-2 rounded-full shadow-sm hover:scale-110 transition-transform"
+            className="absolute top-3 right-3 z-20 bg-white/90 p-2 rounded-full shadow-md hover:scale-110 transition-transform"
           >
             {isWishlisted ? (
-              <FaHeart className="text-red-500 text-sm" />
+              <FaHeart className="text-[#00A851] text-sm" />
             ) : (
-              <FaRegHeart className="text-gray-500 text-sm hover:text-red-400" />
+              <FaRegHeart className="text-gray-500 text-sm hover:text-[#00A851]" />
             )}
           </button>
 
@@ -107,30 +112,32 @@ export default function Home() {
             <img
               src={`${import.meta.env.VITE_UPLOADS_IMAGES_URL}/${course.image}`}
               alt={course.title}
-              className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+              className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="w-full h-48 bg-gray-100 flex items-center justify-center text-gray-400 font-medium">
+            <div className="w-full h-52 bg-gray-100 flex items-center justify-center text-gray-400 font-medium">
               No Preview Available
             </div>
           )}
           {course.price === 0 && (
-            <span className="absolute top-3 left-3 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Free</span>
+            <span className="absolute top-3 left-3 bg-[#FF6A3D] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">
+              Free
+            </span>
           )}
         </div>
 
         <div className="p-5 flex flex-col grow">
-          <h3 className="font-bold text-gray-800 text-md leading-snug line-clamp-2 mb-1 group-hover:text-green-600 transition-colors">
+          <h3 className="font-bold text-[#1A2238] text-md leading-snug line-clamp-2 mb-2 group-hover:text-[#00A851] transition-colors">
             {course.title}
           </h3>
           <p className="text-sm text-gray-500 mb-4 italic">By {course.teacher?.name || "Expert Instructor"}</p>
           
-          <div className="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
-            <span className="text-xl font-black text-gray-900 font-mono">₹{course.price || 0}</span>
+          <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+            <span className="text-2xl font-black text-[#1A2238]">₹{course.price || 0}</span>
             {isEnrolled ? (
               <button
                 onClick={(e) => { e.stopPropagation(); navigate(`/course/${course._id}`); }}
-                className="bg-green-100 text-green-700 px-4 py-2 rounded-lg text-sm font-bold hover:bg-green-600 hover:text-white transition-colors"
+                className="bg-green-50 text-[#00A851] px-4 py-2 rounded-xl text-sm font-bold hover:bg-[#00A851] hover:text-white transition-all"
               >
                 Go to Course
               </button>
@@ -138,13 +145,13 @@ export default function Home() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={(e) => { e.stopPropagation(); handleAddToCart(course._id); }}
-                  className="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg text-sm font-bold hover:bg-gray-200 transition-all flex items-center gap-1"
+                  className="bg-gray-100 text-[#1A2238] px-3 py-2 rounded-xl text-sm font-bold hover:bg-green-50 hover:text-[#00A851] transition-all flex items-center gap-1"
                 >
                   <FaShoppingCart size={12} />
                 </button>
                 <button
                   onClick={(e) => { e.stopPropagation(); handleBuy(course._id); }}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 shadow-md transition-all"
+                  className="bg-[#1A2238] text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-[#00A851] shadow-md transition-all"
                 >
                   Enroll
                 </button>
@@ -157,86 +164,87 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-white min-h-screen font-sans">
+    <div className="bg-[#fcfdfc] min-h-screen font-sans antialiased text-gray-800">
       
-    
-      <div className="relative bg-linear-to-br from-green-50 via-white to-green-50 pt-20 pb-24 px-6 overflow-hidden">
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-green-200 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-200 rounded-full blur-3xl opacity-20"></div>
+      {/* Clean Gradient Hero Area Matching the UI Frame exactly */}
+      <div className="relative bg-gradient-to-br from-white via-[#f4fbf6] to-[#edfcf1] pt-20 pb-24 px-6 md:px-12 overflow-hidden">
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[#00A851] rounded-full blur-3xl opacity-5"></div>
+        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-[#00A851] rounded-full blur-3xl opacity-10"></div>
 
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
           <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl text-gray-900 leading-[1.1] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-sans font-normal text-[#1A2238] tracking-tight leading-[1.15] mb-6">
               Unlock Your <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-green-600 to-emerald-400">
+              <span className="font-semibold text-[#00A851]">
                 Future Potential
               </span>
             </h1>
-            <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 font-normal mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Join over 5,000+ students mastering real-world skills with expert-led courses.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
               <button
-                onClick={() => window.scrollTo({ top: 600, behavior: "smooth" })}
-                className="group flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-700 hover:scale-105 transition-all shadow-lg shadow-green-100"
+                onClick={() => window.scrollTo({ top: 720, behavior: "smooth" })}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#00A851] font-bold text-md text-white shadow-md hover:bg-[#008f43] transition-all duration-200 cursor-pointer group"
               >
-                Start Learning 
-                <Rocket size={20} className="group-hover:translate-x-0.5 transition-transform" />
+                <span>Start Learning</span>
+                <Rocket size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
               </button>
             </div>
           </div>
 
-          <div className="flex-1 relative group">
-            <div className="absolute inset-0 bg-green-400 rounded-3xl rotate-3 group-hover:rotate-1 transition-transform opacity-10"></div>
+          {/* Right Hero Image Card Setup */}
+          <div className="flex-1 w-full max-w-xl lg:max-w-none relative group flex justify-center lg:justify-end">
+            <div className="absolute inset-0 bg-[#00A851] rounded-[2rem] opacity-10 blur-xl group-hover:scale-105 transition-transform duration-500"></div>
             <img
               src={heroImage}
               alt="Interactive Learning"
-              className="relative z-10 w-full rounded-3xl shadow-2xl border-4 border-white transform group-hover:-translate-y-2 transition-transform duration-500"
+              className="relative z-10 w-full lg:w-[92%] rounded-[2rem] shadow-xl border-4 border-white object-cover transition-all duration-500"
             />
           </div>
         </div>
       </div>
 
-     
-      <div className="max-w-7xl mx-auto px-6 py-16 space-y-20">
+      {/* Grid Content Sections */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 space-y-24">
         
-       
+        {/* Trending Section */}
         <section>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Trending Right Now</h2>
-              <p className="text-gray-500">The most popular courses this week</p>
+              <h2 className="text-2xl font-bold text-[#1A2238]">Trending Right Now</h2>
+              <p className="text-sm text-gray-500">The most popular courses this week</p>
             </div>
             <button 
               onClick={() => navigate('/courses')}
-              className="flex items-center gap-1 text-green-600 font-bold hover:underline"
+              className="flex items-center gap-0.5 text-[#00A851] text-sm font-bold hover:underline"
             >
-              View All <ChevronRight size={18} />
+              View All <ChevronRight size={16} />
             </button>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {trendingCourses.length > 0 ? (
               trendingCourses.map((c) => <CourseCard key={c._id} {...c} />)
             ) : (
-              <div className="col-span-full h-40 flex items-center justify-center border-2 border-dashed border-gray-100 rounded-2xl text-gray-400">
+              <div className="col-span-full h-40 flex items-center justify-center border-2 border-dashed border-gray-100 rounded-2xl text-gray-400 text-sm">
                 Fetching trending courses...
               </div>
             )}
           </div>
         </section>
 
-       
-        <section className="bg-gray-50 rounded-3xl p-10 border border-gray-100 mb-20">
+        {/* Featured Section */}
+        <section className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-2 h-8 bg-green-500 rounded-full"></div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Featured Excellence</h2>
+            <div className="w-1.5 h-6 bg-[#00A851] rounded-full"></div>
+            <h2 className="text-2xl font-bold text-[#1A2238]">Featured Excellence</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredCourses.length > 0 ? (
               featuredCourses.map((c) => <CourseCard key={c._id} {...c} />)
             ) : (
-              <p className="text-gray-400 col-span-full">No featured courses available.</p>
+              <p className="text-gray-400 col-span-full text-sm">No featured courses available.</p>
             )}
           </div>
         </section>
@@ -244,3 +252,5 @@ export default function Home() {
     </div>
   );
 }
+
+```
