@@ -122,7 +122,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="px-4 md:px-10 py-4 shadow border-b bg-white sticky top-0 z-50">
+    <div className="px-4 md:px-10 py-4   bg-white sticky top-0 z-50">
 
       <div className="flex justify-between items-center gap-3">
         <div className="flex items-center gap-3 md:gap-6">
