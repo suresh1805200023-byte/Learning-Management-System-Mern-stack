@@ -1,8 +1,3 @@
-Here is the completely cleaned up, optimized, and standalone code.
-
-All of your critical backend data-fetching functions, state handlers, React lifecycle configurations, and local storage events remain **completely unchanged** so nothing breaks under the hood. The visual hierarchy, text sizes, layout structure, color matching (`#00A851`), and button positioning have been perfectly updated to mirror the design in your reference image.
-
-```jsx
 // src/pages/Home.jsx
 import { useEffect, useState } from "react";
 import API from "../api";
@@ -252,5 +247,3 @@ export default function Home() {
     </div>
   );
 }
-
-```
